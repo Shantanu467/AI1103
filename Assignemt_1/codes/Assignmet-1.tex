@@ -20,7 +20,9 @@
 \setlength{\columnseprule}{1pt}
 \def\columnseprulecolor{\color{black}}
 
-
+\newcommand*{\permcomb}[4][0mu]{{{}^{#3}\mkern#1#2_{#4}}}
+\newcommand*{\perm}[1][-3mu]{\permcomb[#1]{P}}
+\newcommand*{\comb}[1][-1mu]{\permcomb[#1]{C}}
 
 \begin{document}
 \maketitle
@@ -67,7 +69,7 @@ Since the balls are drawn with replacement, the trials are Bernoulli trials.
 \\
 So $X$ has Binomial Distribution 
 \begin{equation}
-    P(X=x)=\binom{n}{x}q^{n-x}p^{x} 
+    Pr(X=k)=\comb{n}{k} \times q^{n-k} \times p^{k} 
 \end{equation} 
 
 Here,\\
@@ -79,14 +81,14 @@ Here,\\
 
 \begin{tabular}{|c|c|c|c|c|}
 \hline
-\textbf{Variables} & $n$ & $p$    & $q$    & $x$          \\ \hline
+\textbf{Variables} & $n$ & $p$    & $q$    & $k$          \\ \hline
 \textbf{Values}    & 4 & 1/10 & 9/10 & 0 \\ \hline
 \end{tabular}
 \\
 Now,
 
 \begin{align}
-P(X=0) &= \binom{4}{0} \bigg(\frac{9}{10}\bigg)^{(4-0)} \bigg(\frac{1}{10}\bigg)^{0} \\
+Pr(X=0) &= \comb{4}{0} \times \bigg(\frac{9}{10}\bigg)^{(4-0)} \times \bigg(\frac{1}{10}\bigg)^{0} \\
 &=\frac{4!}{(4-0)! 0!} \times 1 \times \bigg(\frac{9}{10}\bigg)^{4} \\
 &=\bigg( \frac{9}{10}\bigg) ^{4} \\
 &= 0.6561
