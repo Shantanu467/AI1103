@@ -1,0 +1,103 @@
+\documentclass[twocolumn]{article}
+\usepackage[portrait,margin=2cm]{geometry}
+
+\title{AI 1103 Assignment-2}
+\author{Shantanu Pandey\\ CS20BTECH11046}
+\date{}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{nopageno}
+% \usepackage[margin=1in]{geometry}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{multicol}
+\usepackage{enumitem}
+\usepackage{hyperref}
+%\setlength{\columnsep}{0.5cm}
+%\setlength{\parindent}{0em}
+\usepackage{color}
+\usepackage{comment}
+%\setlength{\columnseprule}{1pt}
+%\def\columnseprulecolor{\color{black}}
+
+
+\providecommand{\mbf}{\mathbf}
+\providecommand{\pr}[1]{\ensuremath{\Pr\left(#1\right)}}
+\providecommand{\qfunc}[1]{\ensuremath{Q\left(#1\right)}}
+\providecommand{\sbrak}[1]{\ensuremath{{}\left[#1\right]}}
+\providecommand{\lsbrak}[1]{\ensuremath{{}\left[#1\right.}}
+\providecommand{\rsbrak}[1]{\ensuremath{{}\left.#1\right]}}
+\providecommand{\brak}[1]{\ensuremath{\left(#1\right)}}
+\providecommand{\lbrak}[1]{\ensuremath{\left(#1\right.}}
+\providecommand{\rbrak}[1]{\ensuremath{\left.#1\right)}}
+\providecommand{\cbrak}[1]{\ensuremath{\left\{#1\right\}}}
+\providecommand{\lcbrak}[1]{\ensuremath{\left\{#1\right.}}
+\providecommand{\rcbrak}[1]{\ensuremath{\left.#1\right\}}}
+
+
+\newcommand*{\permcomb}[4][0mu]{{{}^{#3}\mkern#1#2_{#4}}}
+\newcommand*{\perm}[1][-3mu]{\permcomb[#1]{P}}
+\newcommand*{\comb}[1][-1mu]{\permcomb[#1]{C}}
+
+\begin{document}
+\maketitle
+\noindent
+
+\begin{figure} [h]
+    \includegraphics[width = 0.6\columnwidth]{Logo.png}
+\end{figure}
+\vspace{0.3cm}
+
+Download all latex-tikz codes from  
+
+\vspace{0.3cm}  
+    
+\fbox{%
+    \parbox{0.45\textwidth}{%
+        \url{https://github.com/Shantanu467/AI1103/blob/main/Assignment_2/Assignment_2.tex}
+    }%
+    }
+   
+\vspace{0.5cm}
+\section*{Problem}
+\textbf{GATE EC: Question-74 } \\
+ Let $X_1$ be an exponential random variable with
+mean $1$ and $X_2$ a gamma random variable with
+mean $2$ and variance $2$. If $X_1$ and $X_2$ are
+independently distributed, then $\mathrm{P}\brak{X_1 < X_2}$
+is equal to.....
+
+\section*{Solution}
+\begin{align}
+\operatorname{Exp}(\lambda) &= \lambda e^{-x \lambda} \\
+\text{Mean} = E \brak{X} &= 1/ \lambda \\
+\text{Given:} \hspace{1cm}  E \brak{X} &= 1 \\
+\text{So,}  \hspace{0.5cm} \lambda &= 1 \\
+X_1\sim \operatorname{Exp}(1) &= e^{-x}
+\end{align}
+Now,
+\begin{align}
+G(a,\lambda) &= \dfrac{a^{\lambda}}{\Gamma{\lambda}\ } e^{ax}x^{\lambda-1} \\
+\text{Mean} &= \dfrac{\lambda}{a}=2 \text{ (Given)}
+\implies \lambda = 2a \\
+\text{Variance} &=  \dfrac{\lambda}{a^2}=\dfrac{2a}{a^2}=2 \text{ (Given)} \\ \implies a &= 1,\lambda=2 \\
+X_2\sim G(1,2) &= \dfrac{1}{\Gamma{2}\ } e^{x}x \\
+ &= e^{x}x
+\end{align}
+
+Now,
+\begin{align}
+  \mathrm{P}(X_1<X_2) &= \mathrm{P}\brak{X_1 < X_2 \mid X_1 = X_2} \\
+  =& \int \limits_{0}^{\infty} fX_2 \brak{x_2} \times \int \limits_{0}^{x_2} fX_1 \brak{x_1} \, \mathrm{d}x_1 \, \mathrm{d}x_2 \\
+  &= \int \limits_{0}^{\infty} x_2 \mathrm{e}^{-x_2} \times \int \limits_{0}^{x_2} \mathrm{e}^{-x_1} \, \mathrm{d}x_1 \, \mathrm{d}x_2 \\
+  &= \int \limits_{0}^{\infty} x_2 \mathrm{e}^{-x_2} \times \brak{1-\mathrm{e}^{-x_2} } \, \mathrm{d}x_2 
+\end{align}
+Upon solving the definite integral, We get :
+\begin{align}
+   \mathrm{P}(X_1<X_2) &= \mathbf{ \frac{3}{4} } 
+\end{align}
+ % \end{multicols*}
+
+
+\end{document}
