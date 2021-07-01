@@ -5,6 +5,8 @@
 \author{Shantanu Pandey\\ CS20BTECH11046}
 \date{}
 \usepackage{amsmath}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proof}[theorem]{Proof}
 \usepackage{amssymb}
 \usepackage{amsfonts}
 \usepackage{nopageno}
@@ -20,7 +22,6 @@
 \usepackage{comment}
 %\setlength{\columnseprule}{1pt}
 %\def\columnseprulecolor{\color{black}}
-
 
 \providecommand{\mbf}{\mathbf}
 \providecommand{\pr}[1]{\ensuremath{\Pr\left(#1\right)}}
@@ -41,6 +42,18 @@
 \newcommand*{\comb}[1][-1mu]{\permcomb[#1]{C}}
 
 \begin{document}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{problem}{Problem}
+\newtheorem{proposition}{Proposition}[section]
+\newtheorem{lemma}{Lemma}[section]
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{example}{Example}[section]
+\newtheorem{definition}[problem]{Definition}
+
+\newcommand{\BEQA}{\begin{eqnarray}}
+\newcommand{\EEQA}{\end{eqnarray}}
+\newcommand{\define}{\stackrel{\triangle}{=}}
+\newcommand{\Int}{\int\limits}
 \maketitle
 \noindent
 
@@ -69,27 +82,101 @@ independently distributed, then $\mathrm{P}\brak{X_1 < X_2}$
 is equal to.....
 
 \section*{Solution}
+\begin{definition}
+The probability density function (pdf) of an \textbf{ exponential distribution} is
 \begin{align}
-\operatorname{Exp}(\lambda) &= \lambda e^{-x \lambda} \\
-\text{Mean} = E \brak{X} &= 1/ \lambda \\
-\text{Given:} \hspace{1cm}  E \brak{X} &= 1 \\
-\text{So,}  \hspace{0.5cm} \lambda &= 1 \\
-X_1\sim \operatorname{Exp}(1) &= e^{-x}
+    f\brak{x;\lambda} &=
+    \begin{cases}
+    \lambda \mathrm{e}^{-\lambda x} , & x  \geq 0 \\
+     0, &  x < 0
+    \end{cases}
 \end{align}
-Now,
+Here $\lambda > 0$ is the parameter of the distribution, often called the rate parameter.
+\end{definition}
+\begin{lemma}
+The \textbf{mean} of an exponentially distributed random variable $X$ with rate parameter $\lambda$ is given by
 \begin{align}
-G(a,\lambda) &= \dfrac{a^{\lambda}}{\Gamma{\lambda}\ } e^{ax}x^{\lambda-1} \\
+    \mathrm{E}\brak{X} =\frac{1}{\lambda}
+\end{align}
+\end{lemma}
+\begin{proof}
+\begin{align}
+       \mathrm{E}\brak{X} &= \int_{-\infty}^{+\infty} xf_X\brak{x} \,\mathrm{d}x \\
+       \mu &= \int_{-\infty}^{0} 0 \times x \, \mathrm{d}x + \int_{0}^{+\infty} \lambda\mathrm{e}^{-\lambda x} \times x \, \mathrm{d}x \\
+       &= 0 + \brak{- \frac{\brak{\lambda x + 1 } \mathbf{e}^{-\lambda x}} {\lambda}}\Bigr|_{0}^{+\infty } \\
+       &= 0 - \brak{- \frac{\brak{0+1}\mathrm{e}^{0} }{\lambda}} \\
+     \mu  &= \frac{1}{\lambda} \label{Expmu}
+\end{align}
+\end{proof}
+Now, using \eqref{Expmu} and $\mu = 1$ \brak{Given}, we get; 
+ \begin{align}
+    \mu &= \frac{1}{\lambda} = 1 \\
+\implies    \lambda &= 1 \label{explambda}
+\end{align}
+
+So, \begin{align}
+ X_1  \sim  f\brak{x;1} = \mathrm{e}^{-x} \label{FX1}
+\end{align}
+
+
+\begin{definition}
+The probability density function (pdf) of an \textbf{ gamma distribution} is
+\begin{align}
+f\brak{x;\lambda} &=
+    \begin{cases}
+    \dfrac{a^{\lambda}}{\Gamma{\lambda}\ } e^{ax}x^{\lambda-1} , & x > 0 \\
+     0, &  x \leq 0
+    \end{cases}
+        \end{align}
+Here, $\lambda > 0 $, $a>0$ and
+\begin{align}
+    \Gamma{n} &= a^{n} \int_{0}^{\infty} \mathrm{e}^{ax} x^{n -1} \, \mathrm{d}x \label{Gamma} \\
+ \Gamma{n} &= \brak{n-1}! \label{GammaFac}   \end{align} 
+\end{definition}
+\begin{lemma}
+The \textbf{mean} and \textbf{variance} of an exponentially distributed random variable $X$ with $\lambda$ and $a$ is given by
+\begin{align}
+    \mu &= \frac{\lambda}{a} \\
+    \sigma^2 &= \frac{\lambda}{a^2}
+\end{align}
+\end{lemma}
+\begin{proof}
+\begin{align}
+ \mathrm{E}\brak{X} &= \int_{-\infty}^{+\infty} xf_X\brak{x} \,\mathrm{d}x \\
+ \mu &= 0 + \int_{0}^{\infty} x \times \dfrac{a^{\lambda}}{\Gamma{\lambda}\ } e^{ax}x^{\lambda-1} \, \mathrm{d}x \\
+ &= 0 + \frac{ a^{\lambda}}{\Gamma \lambda} \int_0^\infty e^{ax}x^{\lambda} \, \mathrm{d}x \\ \label{meanint}
+ \text{Now, Using} \hspace{0.2cm} n &= \lambda +1 \hspace{0.2cm} \text{in} \hspace{0.2cm} \eqref{Gamma} \\
+ \text{We get:} \hspace{0.2cm} \Gamma \brak{ \lambda +1} &= a^{\lambda +1} \int_0^\infty e^{ax}x^{\lambda} \, \mathrm{d}x \\ \label{Gamma1}
+\text{Now,} \hspace{0.2cm}
+ \mu &= \frac{a^\lambda}{\Gamma \lambda} \times \frac{\Gamma \brak{\lambda +1}}{ a^{\lambda +1} } \\
+ &= \frac{1}{a} \times \frac{\Gamma \brak{\lambda+1}}{ \Gamma \lambda} \\
+ \text{Using} \hspace{0.2cm} \eqref{GammaFac} \\
+ &= \frac{1}{a} \times \frac{\lambda !}{\brak{\lambda -1 }!} \\
+ \mu &= \frac{\lambda}{a} \label{GammaMean}
+ \end{align}
+Similarly we can find E\brak{X^2} .
+\begin{align}
+    \mathrm{E}\brak{X} &= \frac{\lambda \brak{\lambda +1}}{ a^2} \\
+    \sigma^{2} &= \brak{\mathrm{E}\brak{X}}^2 - \mathrm{E}\brak{X^2} \\
+    &=  \frac{\lambda}{a^2} \label{GammaVar}
+\end{align}
+
+\end{proof}
+Now by using \eqref{GammaMean} \eqref{GammaVar} And given info; \\
+\begin{align}
 \text{Mean} &= \dfrac{\lambda}{a}=2 \text{ (Given)}
 \implies \lambda = 2a \\
 \text{Variance} &=  \dfrac{\lambda}{a^2}=\dfrac{2a}{a^2}=2 \text{ (Given)} \\ \implies a &= 1,\lambda=2 \\
 X_2\sim G(1,2) &= \dfrac{1}{\Gamma{2}\ } e^{x}x \\
- &= e^{x}x
+ &= e^{x}x \label{FX2}
 \end{align}
 
-Now,
+
+Now by the help of \eqref{FX1} and \eqref{FX2}, we can solve for $\mathrm{P} \brak{X_1 < X_2} $ .
+
 \begin{align}
   \mathrm{P}(X_1<X_2) &= \mathrm{P}\brak{X_1 < X_2 \mid X_1 = X_2} \\
-  =& \int \limits_{0}^{\infty} fX_2 \brak{x_2} \times \int \limits_{0}^{x_2} fX_1 \brak{x_1} \, \mathrm{d}x_1 \, \mathrm{d}x_2 \\
+  &= \int \limits_{0}^{\infty} fX_2 \brak{x_2} \times \int \limits_{0}^{x_2} fX_1 \brak{x_1} \, \mathrm{d}x_1 \, \mathrm{d}x_2 \\
   &= \int \limits_{0}^{\infty} x_2 \mathrm{e}^{-x_2} \times \int \limits_{0}^{x_2} \mathrm{e}^{-x_1} \, \mathrm{d}x_1 \, \mathrm{d}x_2 \\
   &= \int \limits_{0}^{\infty} x_2 \mathrm{e}^{-x_2} \times \brak{1-\mathrm{e}^{-x_2} } \, \mathrm{d}x_2 
 \end{align}
