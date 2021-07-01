@@ -39,6 +39,28 @@
 \newcommand*{\perm}[1][-3mu]{\permcomb[#1]{P}}
 \newcommand*{\comb}[1][-1mu]{\permcomb[#1]{C}}
 
+
+\newtheorem{theorem}{Theorem}
+\newcommand{\BEQA}{\begin{eqnarray}}
+\newcommand{\EEQA}{\end{eqnarray}}
+\newcommand{\define}{\stackrel{\triangle}{=}}
+\bibliographystyle{IEEEtran}
+\raggedbottom
+\setlength{\parindent}{0pt}
+\providecommand{\mbf}{\mathbf}
+\providecommand{\pr}[1]{\ensuremath{\Pr\left(#1\right)}}
+\providecommand{\qfunc}[1]{\ensuremath{Q\left(#1\right)}}
+\providecommand{\sbrak}[1]{\ensuremath{{}\left[#1\right]}}
+\providecommand{\lsbrak}[1]{\ensuremath{{}\left[#1\right.}}
+\providecommand{\rsbrak}[1]{\ensuremath{{}\left.#1\right]}}
+\providecommand{\brak}[1]{\ensuremath{\left(#1\right)}}
+\providecommand{\lbrak}[1]{\ensuremath{\left(#1\right.}}
+\providecommand{\rbrak}[1]{\ensuremath{\left.#1\right)}}
+\providecommand{\cbrak}[1]{\ensuremath{\left\{#1\right\}}}
+\providecommand{\lcbrak}[1]{\ensuremath{\left\{#1\right.}}
+\providecommand{\rcbrak}[1]{\ensuremath{\left.#1\right\}}}
+%\theoremstyle{remark}
+\newtheorem{rem}{Remark}
 \begin{document}
 \maketitle
 \noindent
@@ -79,15 +101,18 @@ The value of $a$ is
 
 
 \section*{Solution}
+\begin{theorem}
+    The integral of Probability Density Function over the continuous random variable is equal to $1$.
+    \end{theorem}
 \begin{align}
- \text{ Using, Total PDF } (\pr{-\infty < X < \infty}) &= 1  \\
+\text{ Using This, } (\pr{-\infty < X < \infty}) &= 1  \\
 \iint_{-\infty}^{+\infty}  f(x,y) \, \mathrm{d}x \, \mathrm{d}y &= 1 \\
  0 + \int \limits_{y=0}^{y=\infty} \int \limits_{x=0}^{x=y} a \times \mathrm{e}^{-2y} \, \mathrm{d}x\, \mathrm{d}y  &= 1 \\
   a \times \int \limits_{y=0}^{y=\infty}  \brak{y\mathrm{e}^{-2y} } \, \mathrm{d}y &= 1 \\
 a \times \frac{1}{4} &= 1 \\
 \text{So,  } a &= 4
 \end{align}
- Therefore, the correct option is \textbf{\ref{option A}.}  
+ Therefore, the correct option is \textbf{\ref{option A}.  }
 
  % \end{multicols*}
 
