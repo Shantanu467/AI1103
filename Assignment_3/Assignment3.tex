@@ -112,8 +112,23 @@ The value of $a$ is
 a \times \frac{1}{4} &= 1 \\
 \text{So,  } a &= 4
 \end{align}
- Therefore, the correct option is \textbf{\ref{option A}.  }
-
+ Therefore, the correct option is \textbf{\ref{option A}.  } \\\\
+ 
+ Marginal PDF of X is,\\
+ \begin{align}
+ f_X\brak{X} &= \int \limits_{y=-\infty}^{y=\infty} f_X(x,y) \, \mathrm{d}y\\
+ &= 0 + \int \limits_{y=0}^{y=\infty} 4 \times {e}^{-2y} \, \mathrm{d}y \\
+  &= \brak{ -2\mathrm{e}^{-2y} }\Bigr|_{0}^{+\infty }  \\ 
+  &= 0 - \brak{-2\mathrm{e}^0} \\
+  &= 2 
+ \end{align}
+ Marginal PDF of Y is,
+ \begin{align}
+  f_Y\brak{Y} &= \int \limits_{x=-\infty}^{x=\infty} f_Y(x,y) \, \mathrm{d}x\\ 
+  &= 0 + \int \limits_{x=0}^{x=y} 4 \times {e}^{-2y} \, \mathrm{d}x \\ 
+  &= \brak{ 4\mathrm{e}^{-2y}} \times \brak{x}\Bigr|_{0}^{y }  \\
+  &=  4y\mathrm{e}^{-2y} \hspace{0.4cm} \brak{ \text{here:} 0<y<\infty}
+ \end{align}
  % \end{multicols*}
 
 
