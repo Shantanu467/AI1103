@@ -144,14 +144,20 @@ The \textbf{mean} and \textbf{variance} of an exponentially distributed random v
 \begin{align}
  \mathrm{E}\brak{X} &= \int_{-\infty}^{+\infty} xf_X\brak{x} \,\mathrm{d}x \\
  \mu &= 0 + \int_{0}^{\infty} x \times \dfrac{a^{\lambda}}{\Gamma{\lambda}\ } e^{ax}x^{\lambda-1} \, \mathrm{d}x \\
- &= 0 + \frac{ a^{\lambda}}{\Gamma \lambda} \int_0^\infty e^{ax}x^{\lambda} \, \mathrm{d}x \\ \label{meanint}
- \text{Now, Using} \hspace{0.2cm} n &= \lambda +1 \hspace{0.2cm} \text{in} \hspace{0.2cm} \eqref{Gamma} \\
- \text{We get:} \hspace{0.2cm} \Gamma \brak{ \lambda +1} &= a^{\lambda +1} \int_0^\infty e^{ax}x^{\lambda} \, \mathrm{d}x \\ \label{Gamma1}
-\text{Now,} \hspace{0.2cm}
+ &= 0 + \frac{ a^{\lambda}}{\Gamma \lambda} \int_0^\infty e^{ax}x^{\lambda} \, \mathrm{d}x  \label{meanint} 
+ \end{align}
+Now by using,  n = $ \lambda +1 $ in \eqref{Gamma} we get;
+ \begin{align} 
+  \Gamma \brak{ \lambda +1} &= a^{\lambda +1} \int_0^\infty e^{ax}x^{\lambda} \, \mathrm{d}x  \label{Gamma1}
+  \end{align}
+  Using \eqref{Gamma1} in \eqref{meanint}, we get;
+  \begin{align}
  \mu &= \frac{a^\lambda}{\Gamma \lambda} \times \frac{\Gamma \brak{\lambda +1}}{ a^{\lambda +1} } \\
- &= \frac{1}{a} \times \frac{\Gamma \brak{\lambda+1}}{ \Gamma \lambda} \\
- \text{Using} \hspace{0.2cm} \eqref{GammaFac} \\
- &= \frac{1}{a} \times \frac{\lambda !}{\brak{\lambda -1 }!} \\
+ &= \frac{1}{a} \times \frac{\Gamma \brak{\lambda+1}}{ \Gamma \lambda} 
+ \end{align}
+ Using  \eqref{GammaFac} to find $\Gamma \lambda$
+ \begin{align}
+ \mu &= \frac{1}{a} \times \frac{\lambda !}{\brak{\lambda -1 }!} \\
  \mu &= \frac{\lambda}{a} \label{GammaMean}
  \end{align}
 Similarly we can find E\brak{X^2} .
@@ -164,9 +170,9 @@ Similarly we can find E\brak{X^2} .
 \end{proof}
 Now by using \eqref{GammaMean} \eqref{GammaVar} And given info; \\
 \begin{align}
-\text{Mean} &= \dfrac{\lambda}{a}=2 \text{ (Given)}
+\mu &= \dfrac{\lambda}{a}=2 
 \implies \lambda = 2a \\
-\text{Variance} &=  \dfrac{\lambda}{a^2}=\dfrac{2a}{a^2}=2 \text{ (Given)} \\ \implies a &= 1,\lambda=2 \\
+\sigma^2 &=  \dfrac{\lambda}{a^2}=\dfrac{2a}{a^2}=2  \\ \implies a &= 1,\lambda=2 \\
 X_2\sim G(1,2) &= \dfrac{1}{\Gamma{2}\ } e^{x}x \\
  &= e^{x}x \label{FX2}
 \end{align}
